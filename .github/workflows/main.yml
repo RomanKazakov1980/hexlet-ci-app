@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: 14
           cache: 'npm'
+      - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
           uses: snyk/actions/node@master
           env:

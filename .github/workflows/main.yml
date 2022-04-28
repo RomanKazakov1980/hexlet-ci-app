@@ -9,12 +9,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - uses: actions/setup-node@v3
-
+        with:
+          node-version: 14
+          cache: 'npm'
+      - name: Run Snyk to check for vulnerabilities
+          uses: snyk/actions/node@master
+          env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - run: make install
-
       - run: make lint
-
       - name: run tests
         run: make test
